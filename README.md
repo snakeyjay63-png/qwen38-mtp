@@ -92,7 +92,7 @@ Ran the A/B on your card? Open a PR and add a row.
 | 2x RX 9070 16GB (Vulkan) | 22.1 | 41.6 | 2 | 0.73 | [@tomertec](https://github.com/tomertec) |
 | AMD Radeon AI PRO R9700 32GB | 27.0 | 43.3 | 2 | 0.60-0.94 | [@ajnytebot](https://github.com/ajnytebot) |
 | Ryzen AI Max+ 395 / Radeon 8060S | 11.5 | 23.7 | 2 | 0.52-0.94 | [@shiwuxiu](https://github.com/shiwuxiu) |
-| RTX 4090 24GB | 47.6 | 87.1 | 2 | — | openclaw | ★ GPU metrics
+| RTX 4090 24GB | 47.6 | 87.1 | 2 | — | snakeyjay63-png | ★ GPU metrics
 
 \* A6000 row: unsloth Q8_K_XL, 256K context, q8_0 KV cache — 40.0 GB VRAM baseline, 41.4 GB with spec (rows above: Q4_K_M, 131K, q4_0 KV).
 \* RX 7900 XTX row: unsloth Q4_K_M, 131K context, q4_0 KV cache — 18.9 GB VRAM baseline, 19.7 GB with spec.
@@ -101,7 +101,7 @@ Ran the A/B on your card? Open a PR and add a row.
 \* RX 9070 row: two 16GB cards on one 31.84 GiB pool, Vulkan build b10426, unsloth UD-Q4_K_XL, **262K context**, q8_0 KV cache — 28.0 GiB across the pool with spec. Method differs from the rows above and is spelled out under the sweep below.
 \* R9700 row: unsloth UD-Q4_K_XL, 262K context, q4_0 KV cache, llama.cpp b10433, Vulkan/RADV — 22.53 GB VRAM baseline, 24.55 GB with n-max 2. Method: unchanged `probe.py` at commit `67c20536`, three runs x three prompts, thinking off.
 \* Ryzen AI Max+ 395 row: 64GB unified memory, unsloth UD-Q4_K_XL, 32K context, q8_0 KV cache, llama.cpp b10437, Windows build 26200, Vulkan with AMD driver 32.0.31035.1003. Method: unchanged `probe.py` at commit `67c2053`, three runs x three prompts, thinking off.
-\* RTX 4090 openclaw row: Qwen3.8-27B-Purusha GGUF (q4_K_M), 131K context, q4_0 KV cache, llama-server stock build, Linux/CUDA, Ryzen 7 9800X3D, ngl 999, flash attention on, --parallel 1. Method: stock probe.py, 3 runs × 3 prompts, thinking off. **First row with GPU metrics:** baseline 353W/64°C/97% mem util vs MTP 403W/69°C/88% mem util — +50W, +5°C, +519 MiB VRAM, but GPU util drops 3% and mem util drops 9% (fewer forward passes). Per-prompt: Python 47.6→96.2 (+102%), Prose 47.8→73.3 (+53%), Bash 47.6→87.1 (+83%).
+\* RTX 4090 snakeyjay63-png row: Qwen3.8-27B-Purusha GGUF (q4_K_M), 131K context, q4_0 KV cache, llama-server stock build, Linux/CUDA, Ryzen 7 9800X3D, ngl 999, flash attention on, --parallel 1. Method: stock probe.py, 3 runs × 3 prompts, thinking off. **First row with GPU metrics:** baseline 353W/64°C/97% mem util vs MTP 403W/69°C/88% mem util — +50W, +5°C, +519 MiB VRAM, but GPU util drops 3% and mem util drops 9% (fewer forward passes). Per-prompt: Python 47.6→96.2 (+102%), Prose 47.8→73.3 (+53%), Bash 47.6→87.1 (+83%).
 \* RTX 4090 Spadav_ row: unsloth Q4_K_M, 200K context, q4_0 KV cache, q8_0 draft KV, mmproj loaded (888MB on GPU) — method: stock probe.py + 4096-token curl (MTP crossover: overhead dominates at ≤400 tokens, +60% at 4096 tokens).
 
 ### A6000 48GB: n-max sweep
